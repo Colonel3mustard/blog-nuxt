@@ -1,18 +1,48 @@
 <template>
   <v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item nuxt :to="`/`">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item nuxt :to="`/posts`">
+            <v-list-item-icon>
+              <v-icon>mdi-book-open-page-variant</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Blog</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
     
     <v-app-bar
       fixed
       app
     >
-    <v-btn :to="`/`" nuxt>
-      <v-icon>mdi-checkbox-multiple-blank-circle-outline</v-icon>
-    </v-btn>
-    <v-spacer />
+    <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title id="title" v-text="title" />
       <v-spacer />
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
       
     </v-app-bar>
+
     <v-main>
       <v-container>
         <Nuxt />
@@ -33,7 +63,9 @@ export default {
   data () {
     return {
       fixed: false,
-      title: 'Nota Bene Wellness'
+      title: 'Nota Bene Wellness',
+      drawer: false,
+      group: null,
     }
   }
 }

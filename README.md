@@ -1,4 +1,4 @@
-# blog-nuxt-2
+# blog-nuxt
 
 ## Build Setup
 
